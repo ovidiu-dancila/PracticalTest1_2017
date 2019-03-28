@@ -29,17 +29,19 @@ public class ProcessingThread extends Thread {
             sleep();
 
             int message_type = new Random().nextInt() % 3 + 1;
+            float mean = (float)(firstNumber + secondNumber) / 2;
+            float geom_mean = (float) Math.sqrt(firstNumber * secondNumber);
+            String message = new Timestamp(System.currentTimeMillis()).toString() + " " + mean + " " + geom_mean;
             switch (message_type) {
                 case Constants.MESSAGE_TIME:
-                    sendMessage(message_type, new Timestamp(System.currentTimeMillis()).toString());
+                    sendMessage(message_type, message);
                     break;
                 case Constants.MESSAGE_MEAN:
-                    float mean = (float)(firstNumber + secondNumber) / 2;
-                    sendMessage(message_type, Float.toString(mean));
+                    sendMessage(message_type, message);
                     break;
                 case Constants.MESSAGE_GEOM_MEAN:
-                    float geom_mean = (float) Math.sqrt(firstNumber * secondNumber);
-                    sendMessage(message_type, Float.toString(geom_mean));
+
+                    sendMessage(message_type, message);
                     break;
             }
         }

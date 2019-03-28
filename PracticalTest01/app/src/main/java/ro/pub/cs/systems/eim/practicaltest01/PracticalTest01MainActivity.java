@@ -62,7 +62,7 @@ public class PracticalTest01MainActivity extends AppCompatActivity {
                 int left = Integer.parseInt(left_txt.getText().toString());
                 int right = Integer.parseInt(right_text.getText().toString());
 
-                if (left + right > Constants.MAX_CLICKS) {
+                if (left + right > Constants.MAX_CLICKS && serviceStatus == Constants.STOPPED_SERVICE) {
                     Intent intent = new Intent(getApplicationContext(), PracticalTest01Service.class);
                     intent.putExtra("firstNumber", left);
                     intent.putExtra("secondNumber", right);
